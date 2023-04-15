@@ -21,6 +21,10 @@
 
     python -m pytest tests/
 
+---
+
+## Allure report
+
 ### Запуск теста с записью отчета в Allure
 
     python -m pytest --alluredir=test_results/ tests/test_user_auth.py
