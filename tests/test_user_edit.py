@@ -1,7 +1,6 @@
-import requests
-
 from lib.base_case import BaseCase
 from lib.assertions import Assertions
+from lib.my_requests import MyRequests
 
 
 class TestUserEdit(BaseCase):
@@ -9,7 +8,7 @@ class TestUserEdit(BaseCase):
         # РЕГИСТРАЦИЯ ПОЛЬЗОВАТЕЛЯ
         register_data = self.prepare_registration_data()
 
-        response_one = requests.post('https://playground.learnqa.ru/api/user/', data=register_data)
+        response_one = MyRequests.post('/user/', data=register_data)
 
         Assertions.assert_code_status(response_one, 200)
         Assertions.assert_json_has_key(response_one, "id")
@@ -25,7 +24,7 @@ class TestUserEdit(BaseCase):
             "password": password
         }
 
-        response_two = requests.post("https://playground.learnqa.ru/api/user/login", data=login_data)
+        response_two = MyRequests.post("/user/login", data=login_data)
 
         auth_sid = self.get_cookie(response_two, 'auth_sid')
         token = self.get_header(response_two, 'x-csrf-token')
@@ -33,8 +32,8 @@ class TestUserEdit(BaseCase):
         # РЕДАКТИРОВАНИЕ ДАННЫХ ПОЛЬЗОВАТЕЛЯ
         new_name = "Changed Name"
 
-        response_three = requests.put(
-            f"https://playground.learnqa.ru/api/user/{user_id}",
+        response_three = MyRequests.put(
+            f"/user/{user_id}",
             headers={"x-csrf-token": token},
             cookies={"auth_sid": auth_sid},
             data={"firstName": new_name}
@@ -43,8 +42,8 @@ class TestUserEdit(BaseCase):
         Assertions.assert_code_status(response_three, 200)
 
         # ПОЛУЧЕНИЕ ДАННЫХ ПОЛЬЗОВАТЕЛЯ
-        response_four = requests.get(
-            f"https://playground.learnqa.ru/api/user/{user_id}",
+        response_four = MyRequests.get(
+            f"/user/{user_id}",
             headers={"x-csrf-token": token},
             cookies={"auth_sid": auth_sid},
         )
