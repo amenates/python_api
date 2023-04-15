@@ -42,3 +42,7 @@ SOAP API
 
 
 pip3 install -r requirements.txt создание среды
+
+
+запуск теста:
+ python -m pytest test_name.py
