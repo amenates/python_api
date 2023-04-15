@@ -1,26 +1,48 @@
 # python_api
 
-<b>Запуск тестов:</b><br>
-python -m pytest test_name.py
+### Запуск тестов
 
-<b>Запуск определенного теста:</b><br>
-python -m pytest test_name.py -k test_negative_auth_check
+    python -m pytest test_name.py
 
-<b>Запуск теста из другой директории:</b><br>
-python -m pytest tests/test_name.py
+### Запуск определенного теста
 
-<b>Запуск теста с выводом в кончаоль print()</b><br>
+    python -m pytest test_name.py -k test_negative_auth_check
+
+### Запуск теста из другой директории
+
+    python -m pytest tests/test_name.py
+
+### Запуск теста с выводом в консоль print()
 ключ -s дает возможность вывести print() в консоль
-python -m pytest -s tests/test_name.py
 
-<b>Запуск всех тестов в директории</b><br>
-python -m pytest tests/
+    python -m pytest -s tests/test_name.py
 
-<br>
+### Запуск всех тестов в директории
 
-<b>Запуск теста с записью отчета в Allure</b><br>
-python -m pytest --alluredir=test_results/ tests/test_user_auth.py
+    python -m pytest tests/
 
-<b>Генерация отчета Allure</b><br>
-allure serve test_results/
+### Запуск теста с записью отчета в Allure
+
+    python -m pytest --alluredir=test_results/ tests/test_user_auth.py
+
+### Генерация отчета Allure
+
+    allure serve test_results/
+
+---
+
+## Работа с различными окружениями
+
+### Установка окружения (через терминал git не работает)
+В командной строке для windows: 
+
+    set ENV=prod
+В командной строке для macOS и Linux:
+
+    export ENV=prod
+
+### Просмотр установленного окружения
+
+    echo %ENV%
+
 
