@@ -15,3 +15,12 @@ python -m pytest -s tests/test_name.py
 
 <b>Запуск всех тестов в директории</b><br>
 python -m pytest tests/
+
+<br>
+
+<b>Запуск теста с записью отчета в Allure</b><br>
+python -m pytest --alluredir=test_results/ tests/test_user_auth.py
+
+<b>Генерация отчета Allure</b><br>
+allure serve test_results/
+
