@@ -3,5 +3,3 @@
 __pycache__/
 logs/*
 test_results/*
-docker-compose.yml
-Dockerfile
